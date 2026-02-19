@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useLang } from "@/contexts/LanguageContext";
 import { Menu, X, Globe, UserRound, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,12 +8,14 @@ import navbarLogo from "@/assets/academiapen-navbar-logo.png";
 const Navbar = () => {
   const { lang, t, toggleLang } = useLang();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { label: t("صفحه اصلی", "Home"), href: "#hero" },
-    { label: t("فرآیند کار", "Process"), href: "#process" },
-    { label: t("تعرفه‌ها", "Pricing"), href: "#pricing" },
-    { label: t("تماس با ما", "Contact"), href: "#contact" },
+    { label: t("صفحه اصلی", "Home"), href: location.pathname === "/" ? "#hero" : "/", isActive: location.pathname === "/" },
+    { label: t("فرآیند کار", "Process"), href: location.pathname === "/" ? "#process" : "/#process", isActive: false },
+    { label: t("نمونه‌کارها", "Samples"), href: "/samples", isActive: location.pathname === "/samples" },
+    { label: t("تعرفه‌ها", "Pricing"), href: location.pathname === "/" ? "#pricing" : "/#pricing", isActive: false },
+    { label: t("تماس با ما", "Contact"), href: location.pathname === "/" ? "#contact" : "/#contact", isActive: false },
   ];
 
   return (
@@ -25,23 +28,31 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center" style={{ gap: "32px" }}>
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="transition-colors duration-200 no-underline"
-              style={{
-                color: "#2d2d2d",
-                fontWeight: 500,
-                fontSize: "15px",
-                letterSpacing: "0.2px",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#2BC0B4")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#2d2d2d")}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isActive = item.isActive;
+            return (
+              <a
+                key={item.href + item.label}
+                href={item.href}
+                className="no-underline"
+                style={{
+                  color: isActive ? "#2BC0B4" : "#2d2d2d",
+                  fontWeight: isActive ? 500 : 400,
+                  fontSize: "15px",
+                  letterSpacing: "0.2px",
+                  textDecoration: "none",
+                  background: "none",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#2BC0B4")}
+                onMouseLeave={(e) => {
+                  if (!isActive) e.currentTarget.style.color = "#2d2d2d";
+                }}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-2">
@@ -132,10 +143,15 @@ const Navbar = () => {
             <div className="container-custom py-4 px-4 flex flex-col gap-3">
               {navItems.map((item) => (
                 <a
-                  key={item.href}
+                  key={item.href + item.label}
                   href={item.href}
-                  className="py-2 font-medium"
-                  style={{ color: "#2d2d2d", fontSize: "15px" }}
+                  className="py-2"
+                  style={{
+                    color: item.isActive ? "#2BC0B4" : "#2d2d2d",
+                    fontSize: "15px",
+                    fontWeight: item.isActive ? 500 : 400,
+                    textDecoration: "none",
+                  }}
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
