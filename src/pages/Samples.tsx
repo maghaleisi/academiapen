@@ -85,15 +85,8 @@ const Samples = () => {
   return (
     <>
       <Navbar />
-      <main
-        style={{
-          minHeight: "100vh",
-          background: "linear-gradient(135deg, #a8e6cf 0%, #c8e6f5 60%, #ffffff 100%)",
-          paddingTop: 80,
-          paddingBottom: 80,
-        }}
-      >
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+      <main className="samples-hero-section">
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 3 }}>
           {/* Breadcrumb */}
           <div style={{ marginTop: 24, fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
             <a href="/" style={{ color: "#2BC0B4", textDecoration: "none", fontWeight: 500 }}>
