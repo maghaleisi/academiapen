@@ -133,7 +133,7 @@ const Footer = () => {
 
             {/* Address */}
             <p style={{ marginTop: 12, fontSize: 12, color: "#888888" }}>
-              Tehran, Iran | m.aminrezaie@gmail.com
+              Mashhad, Iran | m.amin.rezai@gmail.com
             </p>
           </div>
 
