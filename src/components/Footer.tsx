@@ -37,7 +37,7 @@ const Footer = () => {
           <div>
             {/* Logo */}
             <a href="#hero" style={{ textDecoration: "none", display: "inline-block" }}>
-              <img src={academiapenLogo} alt="AcademiaPen" style={{ height: 40 }} />
+              <img src={academiapenLogo} alt="AcademiaPen" style={{ width: 200, height: "auto" }} />
             </a>
 
             {/* DMCA badge */}
