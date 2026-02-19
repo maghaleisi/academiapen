@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     <footer style={{ background: "#ffffff", borderTop: "1px solid #eeeeee" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", paddingTop: 60, paddingBottom: 40, paddingLeft: 24, paddingRight: 24 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", paddingTop: 50, paddingBottom: 50, paddingLeft: 24, paddingRight: 24 }}>
         {/* 4-column grid */}
         <div
           style={{
