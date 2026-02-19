@@ -186,7 +186,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #eeeeee", marginTop: 40, paddingTop: 20, textAlign: "center" }}>
           <span style={{ fontSize: 13, color: "#aaaaaa" }}>
-            {t("ساخته‌شده با عشق برای تعالی آکادمیک ایران.", "Built with care for Iranian academic excellence.")}
+            {t("ساخته‌شده با عشق برای تعالی آکادمیک دانشجویان.", "Built with care for student academic excellence.")}
           </span>
         </div>
       </div>
