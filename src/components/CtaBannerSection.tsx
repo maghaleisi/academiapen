@@ -30,7 +30,7 @@ const CtaBannerSection = () => {
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to right, #ffffff 0%, transparent 12%, transparent 88%, #ffffff 100%)",
+          background: "linear-gradient(to right, rgba(255,255,255,0.3) 0%, transparent 5%, transparent 95%, rgba(255,255,255,0.3) 100%)",
           zIndex: 2,
           pointerEvents: "none",
         }}
