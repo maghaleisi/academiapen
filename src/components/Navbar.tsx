@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { Menu, X, Globe, UserRound, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import navbarLogo from "@/assets/academiapen-navbar-logo.png";
 
 const Navbar = () => {
   const { lang, t, toggleLang } = useLang();
@@ -18,58 +19,8 @@ const Navbar = () => {
     <nav className="fixed top-0 inset-x-0 z-50" style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)" }}>
       <div className="container-custom flex items-center justify-between h-16 px-4">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2">
-          {/* Fountain pen nib SVG */}
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            style={{ flexShrink: 0 }}
-          >
-            {/* Nib body */}
-            <path
-              d="M14 3L24 10L14 25L4 10Z"
-              fill="#2BC0B4"
-              fillOpacity="0.15"
-              stroke="#2BC0B4"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-            />
-            {/* Nib center slit */}
-            <line
-              x1="14"
-              y1="10"
-              x2="14"
-              y2="25"
-              stroke="#2BC0B4"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            {/* Nib highlight left */}
-            <path
-              d="M14 10L4 10L14 25"
-              fill="#2BC0B4"
-              fillOpacity="0.25"
-            />
-            {/* Tip dot */}
-            <circle cx="14" cy="24" r="1.5" fill="#2BC0B4" />
-            {/* Cap band */}
-            <rect x="6" y="8.5" width="16" height="2.5" rx="1.2" fill="#1a1a2e" fillOpacity="0.18" />
-          </svg>
-
-          {lang === "fa" ? (
-            <span className="text-xl font-bold" style={{ color: "#2BC0B4" }}>
-              پژوهش‌یار
-            </span>
-          ) : (
-            <span className="text-xl font-bold leading-none">
-              <span style={{ color: "#1a1a2e" }}>Academia</span>
-              <span style={{ color: "#2BC0B4" }}>Pen</span>
-            </span>
-          )}
+        <a href="#hero" className="flex items-center">
+          <img src={navbarLogo} alt="AcademiaPen" style={{ height: 32 }} />
         </a>
 
         {/* Desktop nav */}
