@@ -1,5 +1,6 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { ShieldCheck } from "lucide-react";
+import academiapenLogo from "@/assets/academiapen-logo.png";
 
 const Footer = () => {
   const { lang, t } = useLang();
@@ -35,22 +36,8 @@ const Footer = () => {
           {/* Column 1 — Brand info */}
           <div>
             {/* Logo */}
-            <a href="#hero" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ flexShrink: 0 }}>
-                <path d="M14 3L24 10L14 25L4 10Z" fill="#2BC0B4" fillOpacity="0.15" stroke="#2BC0B4" strokeWidth="1.5" strokeLinejoin="round" />
-                <line x1="14" y1="10" x2="14" y2="25" stroke="#2BC0B4" strokeWidth="1.2" strokeLinecap="round" />
-                <path d="M14 10L4 10L14 25" fill="#2BC0B4" fillOpacity="0.25" />
-                <circle cx="14" cy="24" r="1.5" fill="#2BC0B4" />
-                <rect x="6" y="8.5" width="16" height="2.5" rx="1.2" fill="#1a1a2e" fillOpacity="0.18" />
-              </svg>
-              {lang === "fa" ? (
-                <span style={{ fontSize: 20, fontWeight: 700, color: "#2BC0B4" }}>پژوهش‌یار</span>
-              ) : (
-                <span style={{ fontSize: 20, fontWeight: 700, lineHeight: 1 }}>
-                  <span style={{ color: "#1a1a2e" }}>Academia</span>
-                  <span style={{ color: "#2BC0B4" }}>Pen</span>
-                </span>
-              )}
+            <a href="#hero" style={{ textDecoration: "none", display: "inline-block" }}>
+              <img src={academiapenLogo} alt="AcademiaPen" style={{ height: 40 }} />
             </a>
 
             {/* DMCA badge */}
