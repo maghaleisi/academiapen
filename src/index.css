@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep navy + warm gold academic palette */
+    --background: 220 25% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 60% 18%;
+    --primary-foreground: 45 100% 96%;
+
+    --secondary: 220 20% 93%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 18% 92%;
+    --muted-foreground: 220 10% 42%;
+
+    --accent: 42 92% 55%;
+    --accent-foreground: 222 60% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 88%;
+    --input: 220 18% 88%;
+    --ring: 42 92% 55%;
+
+    --radius: 0.625rem;
+
+    /* Custom tokens */
+    --gold: 42 92% 55%;
+    --gold-light: 42 85% 72%;
+    --gold-dark: 38 90% 40%;
+    --navy: 222 60% 18%;
+    --navy-light: 222 45% 28%;
+    --navy-dark: 222 65% 10%;
+    --cream: 45 100% 96%;
+    --warm-gray: 30 10% 55%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(222 60% 18%) 0%, hsl(222 45% 28%) 50%, hsl(222 60% 18%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(42 92% 55%) 0%, hsl(38 90% 40%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 25% 97%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(222 60% 18% / 0.08);
+    --shadow-md: 0 8px 24px -6px hsl(222 60% 18% / 0.12);
+    --shadow-lg: 0 16px 48px -12px hsl(222 60% 18% / 0.18);
+    --shadow-gold: 0 4px 20px -4px hsl(42 92% 55% / 0.35);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 45 100% 96%;
+    --card: 222 40% 10%;
+    --card-foreground: 45 100% 96%;
+    --popover: 222 40% 10%;
+    --popover-foreground: 45 100% 96%;
+    --primary: 42 92% 55%;
+    --primary-foreground: 222 60% 12%;
+    --secondary: 222 30% 16%;
+    --secondary-foreground: 45 100% 96%;
+    --muted: 222 30% 16%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 42 92% 55%;
+    --accent-foreground: 222 60% 12%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 42 92% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+  }
+
+  /* RTL support */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="ltr"] {
+    text-align: left;
+  }
+
+  /* Persian number rendering */
+  .fa-num {
+    font-feature-settings: "ss02";
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Section styles */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-count {
+    animation: countUp 2s ease-out;
+  }
+}
