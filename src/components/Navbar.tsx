@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="container-custom flex items-center justify-between h-16 px-4">
         {/* Logo */}
         <a href="#hero" className="flex items-center">
-          <img src={navbarLogo} alt="AcademiaPen" style={{ height: 32 }} />
+          <img src={navbarLogo} alt="AcademiaPen" style={{ width: 160, height: "auto" }} />
         </a>
 
         {/* Desktop nav */}
