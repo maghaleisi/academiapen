@@ -173,11 +173,8 @@
   .samples-hero-section::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to bottom, transparent 50%, #ffffff 100%);
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, transparent 15%, transparent 60%, #ffffff 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -186,7 +183,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, #ffffff 0%, transparent 8%, transparent 92%, #ffffff 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0.25) 0%, transparent 6%, transparent 94%, rgba(255,255,255,0.25) 100%);
     z-index: 2;
     pointer-events: none;
   }
