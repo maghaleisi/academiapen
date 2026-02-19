@@ -1,103 +1,205 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 const Footer = () => {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
-  const services = [
-    t("پایان‌نامه ادبیات انگلیسی", "English Literature Thesis"),
-    t("پایان‌نامه روانشناسی", "Psychology Thesis"),
-    t("مقاله ISI", "ISI Article Writing"),
-    t("پروپوزال", "Proposal Writing"),
-    t("ویرایش و بازخوانی", "Editing & Proofreading"),
-    t("ترجمه تخصصی", "Specialized Translation"),
+  const companyLinks = [
+    { label: t("صفحه اصلی", "Home"), href: "#hero" },
+    { label: t("خدمات", "Services"), href: "#services" },
+    { label: t("فرآیند کار", "Process"), href: "#process" },
+    { label: t("تعرفه‌ها", "Pricing"), href: "#pricing" },
+    { label: t("تماس با ما", "Contact"), href: "#contact" },
   ];
 
-  const quickLinks = [
-    t("درباره ما", "About Us"),
-    t("نمونه کارها", "Portfolio"),
-    t("وبلاگ", "Blog"),
-    t("سوالات متداول", "FAQ"),
-    t("تعرفه‌ها", "Pricing"),
-    t("تماس با ما", "Contact"),
+  const legalLinks = [
+    { label: t("حریم خصوصی", "Privacy Policy"), href: "#" },
+    { label: t("قوانین و مقررات", "Terms and Conditions"), href: "#" },
+    { label: t("گارانتی بازگشت وجه", "Money Back Guarantee"), href: "#" },
+    { label: t("سیاست محرمانگی", "Confidentiality Policy"), href: "#" },
+    { label: t("سیاست سرقت ادبی و هوش مصنوعی", "Plagiarism and AI Policy"), href: "#" },
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
+    <footer style={{ background: "#ffffff", borderTop: "1px solid #eeeeee" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", paddingTop: 60, paddingBottom: 40, paddingLeft: 24, paddingRight: 24 }}>
+        {/* 4-column grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "35% 25% 20% 20%",
+            gap: 0,
+          }}
+          className="footer-grid"
+        >
+          {/* Column 1 — Brand info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">
-              {t("پژوهش‌یار", "AcademiaPen")}
-            </h3>
-            <p className="text-sm opacity-80 leading-7 mb-6">
-              {t(
-                "ارائه‌دهنده خدمات تخصصی نگارش پایان‌نامه و مقاله ISI در حوزه‌های ادبیات انگلیسی، روانشناسی و زبان‌شناسی.",
-                "Specialized academic writing services for English Literature, Psychology, and Linguistics theses and ISI articles."
+            {/* Logo */}
+            <a href="#hero" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ flexShrink: 0 }}>
+                <path d="M14 3L24 10L14 25L4 10Z" fill="#2BC0B4" fillOpacity="0.15" stroke="#2BC0B4" strokeWidth="1.5" strokeLinejoin="round" />
+                <line x1="14" y1="10" x2="14" y2="25" stroke="#2BC0B4" strokeWidth="1.2" strokeLinecap="round" />
+                <path d="M14 10L4 10L14 25" fill="#2BC0B4" fillOpacity="0.25" />
+                <circle cx="14" cy="24" r="1.5" fill="#2BC0B4" />
+                <rect x="6" y="8.5" width="16" height="2.5" rx="1.2" fill="#1a1a2e" fillOpacity="0.18" />
+              </svg>
+              {lang === "fa" ? (
+                <span style={{ fontSize: 20, fontWeight: 700, color: "#2BC0B4" }}>پژوهش‌یار</span>
+              ) : (
+                <span style={{ fontSize: 20, fontWeight: 700, lineHeight: 1 }}>
+                  <span style={{ color: "#1a1a2e" }}>Academia</span>
+                  <span style={{ color: "#2BC0B4" }}>Pen</span>
+                </span>
               )}
+            </a>
+
+            {/* DMCA badge */}
+            <div style={{ marginTop: 24 }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  border: "1px solid #e0e0e0",
+                  borderRadius: 4,
+                  padding: "6px 10px",
+                }}
+              >
+                <ShieldCheck style={{ width: 16, height: 16, color: "#4CAF50" }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#4CAF50", letterSpacing: 0.5 }}>DMCA PROTECTED</span>
+              </div>
+            </div>
+
+            {/* Payment icons row 1 */}
+            <div style={{ marginTop: 20, display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {["Visa", "Mastercard", "Amex", "UnionPay"].map((name) => (
+                <div
+                  key={name}
+                  style={{
+                    width: 44,
+                    border: "1px solid #eeeeee",
+                    borderRadius: 4,
+                    padding: "4px 8px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 9,
+                    fontWeight: 700,
+                    color: name === "Visa" ? "#1A1F71" : name === "Mastercard" ? "#EB001B" : name === "Amex" ? "#006FCF" : "#002E6E",
+                    lineHeight: 1,
+                  }}
+                >
+                  {name === "Visa" && "VISA"}
+                  {name === "Mastercard" && "MC"}
+                  {name === "Amex" && "AMEX"}
+                  {name === "UnionPay" && "UP"}
+                </div>
+              ))}
+            </div>
+
+            {/* Payment icons row 2 */}
+            <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+              {["G Pay", "Apple Pay"].map((name) => (
+                <div
+                  key={name}
+                  style={{
+                    width: 44,
+                    border: "1px solid #eeeeee",
+                    borderRadius: 4,
+                    padding: "4px 8px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 9,
+                    fontWeight: 700,
+                    color: name === "G Pay" ? "#4285F4" : "#333333",
+                    lineHeight: 1,
+                  }}
+                >
+                  {name}
+                </div>
+              ))}
+            </div>
+
+            {/* Copyright */}
+            <p style={{ marginTop: 28, fontSize: 14, color: "#333333", lineHeight: 1.6 }}>
+              © Copyright 2024-2026 AcademiaPen.<br />All rights reserved.
+            </p>
+
+            {/* Legal disclaimer */}
+            <p style={{ marginTop: 16, fontSize: 12, color: "#888888", lineHeight: 1.6 }}>
+              All services provided through AcademiaPen are intended strictly for academic support, learning, and research purposes. Users must not submit our work as their own original work.
+            </p>
+
+            {/* Address */}
+            <p style={{ marginTop: 12, fontSize: 12, color: "#888888" }}>
+              Tehran, Iran | m.aminrezaie@gmail.com
             </p>
           </div>
 
-          {/* Services */}
+          {/* Column 2 — Spacer */}
+          <div />
+
+          {/* Column 3 — Company */}
           <div>
-            <h4 className="font-semibold mb-4">{t("خدمات", "Services")}</h4>
-            <ul className="space-y-2">
-              {services.map((s) => (
-                <li key={s}>
-                  <a href="#services" className="text-sm opacity-75 hover:opacity-100 transition-opacity">
-                    {s}
+            <h4 style={{ fontWeight: 700, fontSize: 18, color: "#1a1a2e", marginBottom: 20 }}>
+              {t("شرکت", "Company")}
+            </h4>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {companyLinks.map((link) => (
+                <li key={link.href + link.label}>
+                  <a
+                    href={link.href}
+                    style={{ color: "#555555", fontSize: 15, lineHeight: 2.2, textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#2BC0B4")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
+                  >
+                    {link.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick links */}
+          {/* Column 4 — Legal info */}
           <div>
-            <h4 className="font-semibold mb-4">{t("لینک‌های مفید", "Quick Links")}</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-sm opacity-75 hover:opacity-100 transition-opacity">
-                    {l}
+            <h4 style={{ fontWeight: 700, fontSize: 18, color: "#1a1a2e", marginBottom: 20 }}>
+              {t("اطلاعات حقوقی", "Legal info")}
+            </h4>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {legalLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    style={{ color: "#555555", fontSize: 15, lineHeight: 2.2, textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#2BC0B4")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
+                  >
+                    {link.label}
                   </a>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold mb-4">{t("تماس با ما", "Contact Us")}</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 opacity-80">
-                <Phone className="h-4 w-4 shrink-0" />
-                <span dir="ltr">+98 915 061 6788</span>
-              </li>
-              <li className="flex items-center gap-2 opacity-80">
-                <Mail className="h-4 w-4 shrink-0" />
-                <span>info@academiapen.com</span>
-              </li>
-              <li className="flex items-center gap-2 opacity-80">
-                <Send className="h-4 w-4 shrink-0" />
-                <span>{t("تلگرام و واتساپ", "Telegram & WhatsApp")}</span>
-              </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs opacity-60">
-          <span>
-            © {new Date().getFullYear()} {t("پژوهش‌یار. تمامی حقوق محفوظ است.", "AcademiaPen. All rights reserved.")}
+        <div style={{ borderTop: "1px solid #eeeeee", marginTop: 40, paddingTop: 20, textAlign: "center" }}>
+          <span style={{ fontSize: 13, color: "#aaaaaa" }}>
+            {t("ساخته‌شده با عشق برای تعالی آکادمیک ایران.", "Built with care for Iranian academic excellence.")}
           </span>
-          <div className="flex gap-4">
-            <a href="#">{t("حریم خصوصی", "Privacy Policy")}</a>
-            <a href="#">{t("قوانین و مقررات", "Terms of Service")}</a>
-          </div>
         </div>
       </div>
+
+      {/* Responsive override for mobile */}
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 };
